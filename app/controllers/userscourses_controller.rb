@@ -3,12 +3,12 @@ class UserscoursesController < ApplicationController
   def index
 
     @userscourses = current_user.userscourses.all
-    @category = Category.find(@userscourses.first.category_id)
+    
     binding.pry
   end
 
   def create
-    @userscourses = current_user.userscourses.build(:user_id => current_user.id, :category_id => params[:category_id])
+    @userscourses = current_user.userscourses.build(:user_id => current_user.id, :course_id => params[:id])
     @userscourses.save
     binding.pry
     redirect_to userscourses_show_path(@userscourses)  

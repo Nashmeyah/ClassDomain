@@ -31,7 +31,7 @@ Course.create(name: "Art Basics 101", description: "Beginners guide to shading t
 Course.create(name: "Basketball", description: "Spring Basketball", category_id: 5)
 Course.create(name: "WW1", description: "3 week course on the history of WW1", category_id: 6)
 
-Userscourse.create(category_id: 6, user_id: 1)
+Userscourse.create(course_id: 6, user_id: 1)
 
 
 
