@@ -2,15 +2,15 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:create, :show, :edit, :update, :destroy]
 
   def index
-    @project = Project.all
+    @project = current_user.projects
   end
 
   def new
-    @project = Project.new
+    @project = current_user.projects.new
   end
 
   def create
-    @project = current_user.courses.projects.build(project_params)
+    @project = current_user.projects.build(project_params)
   end
 
   def show
@@ -31,10 +31,10 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.find_by(id: params[:id])
+    @project = current_user.projects.find_by(id: params[:id])
   end
 
   def project_params
-    params.require(:project).permit(:name, :category_id, :user_id)
+    params.require(:project).permit(:name, :course_id => params[:course_id], :user_id => current_user.id)
   end
 end
