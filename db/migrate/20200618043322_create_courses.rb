@@ -4,7 +4,6 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :description
       t.integer :category_id
-      t.integer :user_id
     end
   end
 end

@@ -6,24 +6,12 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def new
-    @course = Course.new(category_id: params[:category_id])
+    @course = Course.new
   end
 
-  def create  
-    if current_user.courses.none? { |crs| crs == @course }
-      binding.pry
-      @course = current_user.courses.build(name: params[:course][:name], description: params[:course][:description], category_id: params[:course][:category_id])
-      @course.save
-      binding.pry
-      redirect_to course_path(@course)  
-    elsif
-      binding.pry
-      # binding.pry 
-    else
-      binding.pry
-      @course = Course.create(name: params[:name], description: params[:description], category_id: params[:category_id])
+  def create
+      @course = Course.create(course_params)
       redirect_to @course
-    end
   end
 
   def show

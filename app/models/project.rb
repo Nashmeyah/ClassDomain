@@ -1,4 +1,4 @@
 class Project < ApplicationRecord
-  belongs_to :course
+  belongs_to :userscourse
   belongs_to :user
 end
