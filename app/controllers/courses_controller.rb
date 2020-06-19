@@ -6,32 +6,35 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def new
-    @course = Course.new
+    @course = Course.new(category_id: params[:category_id])
   end
 
-  def create
-    
-    @course = Course.new(course_params)
-    
+  def create  
     if current_user.courses.none? { |crs| crs == @course }
-      return "You are already in this class"
+      binding.pry
+      @course = current_user.courses.build(name: params[:course][:name], description: params[:course][:description], category_id: params[:course][:category_id])
+      @course.save
+      binding.pry
+      redirect_to course_path(@course)  
     elsif
-      @course = current_user.courses.build(course_params)
-      
-      redirect_to course_path(@course)
+      binding.pry
+      # binding.pry 
     else
+      binding.pry
       @course = Course.create(name: params[:name], description: params[:description], category_id: params[:category_id])
-      redirect_to course_path(@course)
+      redirect_to @course
     end
   end
 
   def show
-    # if params[:category_id] --- needs validation
+    # need validation
+     if params[:category_id]
     
       @category = Category.find(params[:category_id])
       @course = Course.find(params[:id])
-    # end    
+    end 
 
+    @course = Course.find(params[:id])
   end
 
   def edit
@@ -50,6 +53,7 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
 
   def set_course
     @course = Course.find_by(id: params[:id])
+    
   end
 
   def course_params
