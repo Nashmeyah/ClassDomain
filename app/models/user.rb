@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :courses
-  has_many :projects, through: :courses
+  has_many :projects
+  has_many :courses, through: :projects
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

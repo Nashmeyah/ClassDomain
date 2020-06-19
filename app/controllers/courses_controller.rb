@@ -2,8 +2,12 @@ class CoursesController < ApplicationController
 before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
 
   def index
-    @course = Course.all
-    
+    if params[:category_id]
+      binding.pry
+      @course = Category.find(params[:category_id]).courses
+    else
+      @course = Course.all
+    end
   end
 
   def new
@@ -18,6 +22,12 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def show
+    # if params[:category_id] --- needs validation
+
+      @category = Category.find(params[:category_id])
+      @course = Course.find(params[:id])
+    # end    
+
   end
 
   def edit
@@ -39,7 +49,7 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def course_params
-    params.require(:course).permit(:name, :description, :category_id)
+    params.require(:course).permit(:name, :description, :category_id, category_attributes: [])
   end
 
 end

@@ -1,0 +1,7 @@
+<h1><%= @category.name%></h1>
+
+Courses:
+
+<% @category.courses.each do |course|%>
+    <%= link_to course.name, category_course_path(@category, course)%>
+<%end%>

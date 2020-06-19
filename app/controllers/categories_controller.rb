@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
 
     def index
-        
         @category = Category.all
     end
 
@@ -11,7 +10,7 @@ class CategoriesController < ApplicationController
     end
 
     def show
-         
+         @category = Category.find_by(id: params[:id])
     end
 
     def create

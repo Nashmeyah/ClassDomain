@@ -9,9 +9,14 @@ Rails.application.routes.draw do
 
   root to: 'application#welcome'
 
-  resources :courses
-  resources :projects
-  resources :categories do
-    resources :courses
+  resources :courses do
+    resources :projects, only: [:new, :show]
   end
+
+  resources :projects
+
+  resources :categories do
+    resources :courses, only: [:show, :index]
+  end
+
 end
