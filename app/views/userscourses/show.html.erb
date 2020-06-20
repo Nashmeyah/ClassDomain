@@ -10,4 +10,6 @@ Class Info:
 <%= @userscourses.course.description%>
 <br>
 <br>
-<%= link_to "Drop Course",  userscourses_destroy_path(@userscourses), method: 'destroy'%>
+<%= link_to "Create Project and/or Assignment", new_userscourse_project_path%>
+<br>
+<%= link_to "Drop Course",  userscourse_path(@userscourses), method: :destroy%>
