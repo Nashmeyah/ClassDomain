@@ -1,7 +1,9 @@
 class UserscoursesController < ApplicationController
 
   def index
-    @userscourses = current_user.userscourses
+    if user_signed_in?
+      @userscourses = current_user.userscourses
+    end
   end
 
   def create

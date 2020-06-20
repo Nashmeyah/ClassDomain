@@ -1,4 +1,12 @@
-<% if @category%>
+<% if current_user.admin?%>
+    <h1>Class name: </h1>
+        <br><%= @course.name%>
+        <br>
+        <br>
+        <h1>Class description:</h1><br>
+        <%= @course.description%>
+        <%= link_to "Edit class", edit_category_course_path%>
+<%else%>
 
     <h1>Class name: </h1>
         <br><%= @course.name%>
@@ -6,13 +14,6 @@
         <br>
         <h1>Class description:</h1><br>
         <%= @course.description%>
-    <%= button_to "Join this class", new_usercourse_path%> 
-
-<%else%>
-    <h1>Class name: </h1>
-            <br><%= @course.name%>
-            <br>
-            <br>
-            <h1>Class description:</h1><br>
-            <%= @course.description%>
+    <%= button_to "Join this class", new_usercourse_path%>
+    
 <%end%>

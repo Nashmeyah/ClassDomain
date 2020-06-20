@@ -1,15 +1,23 @@
 <h1>Welcome to the School Domain</h1>
-<% if user_signed_in?%>
-<br>
-<h3><%= link_to "View my courses",  userscourses_path%></h3>
-<br>
-<h3><%= link_to "Browse Categories", categories_path%></h3>
-<br>
 
-<h3><%= link_to "View Projects and Assignments",  projects_path%></h3>
+<% if user_signed_in?%>
+
+    <% if current_user.admin?%>
+        <h3><%= link_to "View Categories and Courses", categories_path%></h3>
+
+    <%else%>
+
+        <br>
+        <h3><%= link_to "View my courses",  userscourses_path%></h3>
+        <br>
+        <h3><%= link_to "Browse Categories", categories_path%></h3>
+        <br>
+        <h3><%= link_to "View Projects and Assignments",  projects_path%></h3>
+
+    <%end%>
 
 <%else%>
 
-<h3>Please Log in or Sign up to continue.</h3>
+    <h3>Please Log in or Sign up to continue.</h3>
 
 <%end%>

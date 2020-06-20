@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :projects, only: [:new, :show]
   end
 
-  resources :projects
+  resources :projects, only: [:index]
 
   post '/userscourses/:id/projects/new', to: "projects#create", as: "new_course_project"
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
 
   resources :categories do
-    resources :courses, only: [:show, :index, :new]  
+    resources :courses  
   end
 
 end

@@ -6,5 +6,5 @@ class Course < ApplicationRecord
     validates :name, uniqueness: true
     validates :name, :description, presence: true
 
-    # accepts_nested_attributes_for :category, reject_if: :all_blank
+    accepts_nested_attributes_for :category
 end

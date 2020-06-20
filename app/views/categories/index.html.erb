@@ -1,6 +1,14 @@
-<% @category.each do |category| %>
-<br>
-    <li><%= link_to category.name, category_path(category) %></li>
+<% if current_user.admin?%>
+    <% @category.each do |category| %>
+        <br>
+        <li><%= link_to category.name, category_path(category) %></li>
+        <br>
+    <%end%>
+<%else%>
+    <% @category.each do |category| %>
     <br>
+        <li><%= link_to category.name, category_path(category) %></li>
+        <br>
+    <%end%>
 <%end%>
 

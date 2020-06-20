@@ -4,5 +4,7 @@ class Category < ApplicationRecord
     
     validates :name, presence: true
     validates :name, uniqueness: true
+
+    accepts_nested_attributes_for :courses, reject_if: :all_blank
     
 end
