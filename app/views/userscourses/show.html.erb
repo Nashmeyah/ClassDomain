@@ -1,16 +1,15 @@
-<h1>Course Info</h1>
-<br>
-Class Name:
-<br>
+<h3>Class Name:</h3>
+
  <%= @userscourses.course.name%>
 <br>
 <br>
-Class Info: 
-<br>
+<h3>Class Info: </h3>
+
 <%= @userscourses.course.description%>
 <br>
 <br>
-<%= link_to "Create Project and/or Assignment", new_userscourse_project_path%>
-<br>
 
+<%= link_to "Create Project and/or Assignment", new_course_project_path%>
+<br>
+<br>
 <%= link_to "Drop Course",  userscourse_path(@userscourses), method: :destroy%>

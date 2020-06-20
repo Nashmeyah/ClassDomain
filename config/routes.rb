@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :projects
 
-
+  post '/userscourses/:id/projects/new', to: "projects#create", as: "new_course_project"
 
   post '/categories/:category_id/courses/:id', to: "userscourses#create", as: "new_usercourse"
 

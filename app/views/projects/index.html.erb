@@ -1,1 +1,7 @@
 <h1>Projects: </h1>
+<% current_user.projects.each do |project| %>
+
+    <%= project.name%>
+    <br>
+    <br>
+<%end%>

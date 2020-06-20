@@ -1,5 +1,5 @@
 <h1>My courses:</h1>
-<%= @userscourses.each do |uc|%>
+<% @userscourses.each do |uc|%>
 <br>
     <%= link_to uc.course.name, userscourse_path(uc) %><br>
 <%end%>

@@ -1,19 +1,22 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:create, :show, :edit, :update, :destroy]
+  before_action :set_project, only: [ :show, :edit, :update, :destroy]
 
   def index
     @project = current_user.projects
   end
 
   def new
-    @project = current_user.projects.new
+    if params[:userscourse_id]
+      @userscourse = current_user.userscourses.find_by(id: params[:userscourse_id])
+      @project = @userscourse.projects.build
+    else
+      @project = current_user.projects.build
+    end
   end
 
   def create
-    binding.pry
     @project = current_user.projects.build(project_params)
     @project.save
-    binding.pry
   end
 
   def show
@@ -39,6 +42,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :userscourse_id => params[:id], :user_id => current_user.id)
+    params.require(:project).permit(:name, :user_id, :userscourse_id)
   end
 end
