@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+before_action :authenticate_user!
 before_action :set_category, only: [ :show, :edit, :update, :destroy]
 
     def index
@@ -17,7 +18,7 @@ before_action :set_category, only: [ :show, :edit, :update, :destroy]
         if user_signed_in?
              render :show
         end
-        flash[:error]"You must sign in or create an account to view this page"
+        # flash[:error]"You must sign in or create an account to view this page"
     end
 
     def create

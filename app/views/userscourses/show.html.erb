@@ -1,15 +1,20 @@
+<% if current_user.admin?%>
+Admin Page ----- fix this
+<%else%>
 <h3>Class Name:</h3>
 
- <%= @userscourses.course.name%>
-<br>
-<br>
-<h3>Class Info: </h3>
+    <%= @userscourses.course.name%>
+    <br>
+    <br>
+    <h3>Class Info: </h3>
 
-<%= @userscourses.course.description%>
-<br>
-<br>
+    <%= @userscourses.course.description%>
+    <br>
+    <br>
 
-<%= link_to "Create Project and/or Assignment", new_course_project_path%>
-<br>
-<br>
-<%= link_to "Drop Course", @userscourses, method: :delete%>
+    <%= link_to "Create Project and/or Assignment", new_course_project_path%>
+    <br>
+    <br>
+    <%= link_to "Drop Course", @userscourses, method: :delete%>
+
+<%end%>

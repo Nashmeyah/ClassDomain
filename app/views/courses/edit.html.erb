@@ -1,0 +1,16 @@
+<% if current_user.admin?%>
+
+    <%= form_for(@course, url: category_course_path) do |f| %>
+    
+        <%= f.label :name%>
+        <%= f.text_field :name%>
+
+        <%= f.hidden_field :category_id %>
+        
+        <%= f.label :description%>
+        <%= f.text_field :description%>
+
+        <%= f.submit%>
+    <%end%>
+
+<%end%>

@@ -4,11 +4,13 @@
         <li><%= link_to category.name, category_path(category) %></li>
         <br>
     <%end%>
-<%else%>
+<%elsif current_user%>
     <% @category.each do |category| %>
     <br>
         <li><%= link_to category.name, category_path(category) %></li>
         <br>
     <%end%>
+<%else%>
+You must sign in to access lists
 <%end%>
 
