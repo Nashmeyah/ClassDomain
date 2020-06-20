@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     @project.save
+    redirect_to projects_path
   end
 
   def show

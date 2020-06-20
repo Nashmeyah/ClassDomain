@@ -12,4 +12,4 @@
 <%= link_to "Create Project and/or Assignment", new_course_project_path%>
 <br>
 <br>
-<%= link_to "Drop Course",  userscourse_path(@userscourses), method: :destroy%>
+<%= link_to "Drop Course", @userscourses, method: :delete%>
