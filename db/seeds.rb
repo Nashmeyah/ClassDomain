@@ -10,6 +10,7 @@
 User.create(username: 'Tom', email: 'tom@mail.com', password: '123', admin: false)
 User.create(username: 'Lisa', email: 'lisa@mail.com', password: '123' ,admin: false)
 User.create(username: 'Nash', email: 'nash@mail.com', password: '123', admin: false)
+User.create(username: 'Tim', email: 'tim@mail.com', password: '123', admin: true)
 
 
 
