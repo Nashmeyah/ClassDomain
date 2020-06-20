@@ -1,2 +1,13 @@
-<h1>Userscourses#show</h1>
-<%= current_user.userscourses.count%>
+<h1>Course Info</h1>
+<br>
+Class Name:
+<br>
+ <%= @userscourses.course.name%>
+<br>
+<br>
+Class Info: 
+<br>
+<%= @userscourses.course.description%>
+<br>
+<br>
+<%= link_to "Drop Course",  userscourses_destroy_path(@userscourses), method: 'destroy'%>

@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     
   end
 
-  get 'userscourses/index'
-  get 'userscourses/show'
+  get '/userscourses/index'
+  get '/userscourses/:id', to: 'userscourses#show', as: 'userscourse'
   post '/categories/:category_id/courses/:id', to: "userscourses#create", as: "new_usercourse"
- 
+  delete '/userscourses/:id', to: 'userscourses#destroy', as: 'userscourses_destroy'
 
 end
