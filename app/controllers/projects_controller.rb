@@ -10,7 +10,10 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    binding.pry
     @project = current_user.projects.build(project_params)
+    @project.save
+    binding.pry
   end
 
   def show
@@ -36,6 +39,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :course_id => params[:course_id], :user_id => current_user.id)
+    params.require(:project).permit(:name, :userscourse_id => params[:id], :user_id => current_user.id)
   end
 end

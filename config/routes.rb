@@ -10,16 +10,21 @@ Rails.application.routes.draw do
 
   root to: 'application#welcome'
 
-  resources :userscourses, only: [:index, :show, :destroy]
   
-  post '/categories/:category_id/courses/:id', to: "userscourses#create", as: "new_usercourse"
 
 
-  resources :userscourses, only: [:index, :show, :destroy] do
-    resources :projects, only: [:index, :new, :show]
+  resources :userscourses, only: [:index, :show, :destroy] do 
+    resources :projects, only: [:new, :show]
   end
 
   resources :projects
+
+
+
+  post '/categories/:category_id/courses/:id', to: "userscourses#create", as: "new_usercourse"
+
+
+
 
   resources :categories do
     resources :courses, only: [:show, :index, :new]  

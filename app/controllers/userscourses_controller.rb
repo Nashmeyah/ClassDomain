@@ -19,4 +19,5 @@ class UserscoursesController < ApplicationController
     Userscourse.find_by(id: params[:id]).destroy
     redirect_to  userscourses_index_path
   end
+  
 end

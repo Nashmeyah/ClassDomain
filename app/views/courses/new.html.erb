@@ -1,27 +1,14 @@
 <% if current_user.admin?%>
 
     <%= form_for(@course) do |f| %>
+    
         <%= f.label :name%>
         <%= f.text_field :name%>
-
+        <%= f.hidden_field :category_id %>
         <%= f.label :description%>
         <%= f.text_field :description%>
 
         <%= f.submit%>
-    <%end%>
-
-<%else%>
-
-    <%= form_for(@course) do |f| %>
-
-        <%= f.label :name%>
-        <%= collection_select(:course, :name, Course.all, :name, :name, prompt: true)%>
-
-        <%= f.hidden_field :category_id %>
-        <br>
-        <br>
-        <%= f.submit %>
-        
     <%end%>
 
 <%end%>

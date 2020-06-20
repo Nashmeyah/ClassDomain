@@ -1,8 +1,10 @@
-<%= form_for(@project) do |f|%>
+<% if @userscourse%>
+    <%= form_for(@project) do |f|%>
 
-    <%= f.label :name%>
-    <%= f.text_field :name%>
+        <%= f.label :name%>
+        <%= f.text_field :name%>
 
-    <%= f.hidden_field :userscourse_id %>
-    <%= f.submit%>
+        <%= f.hidden_field :userscourse_id %>
+        <%= f.submit%>
+    <%end%>
 <%end%>
