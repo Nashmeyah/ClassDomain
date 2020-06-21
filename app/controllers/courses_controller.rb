@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!
+before_action :authenticate_user!
 before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
 
   def index
@@ -7,20 +7,33 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def new
-    if params[:category_id] && !Category.exists?(params[:category_id])
-      redirect_to categories_path, alert: "Category not found."
+    # && !Category.exists?(params[:category_id])
+    if params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @course = category.courses.build
     else
-      @category = Category.new(category_id: params[:category_id])
+      redirect_to categories_path
     end
   end
 
   def create
-      @course = Course.create(course_params)
-      redirect_to category_course_path(@course)
+    binding.pry
+      @course = Course.new(course_params)
+      if @course.valid?
+        @course.save
+        redirect_to category_course_path(@course)
+      else 
+        render :new
+      end
   end
 
   def show
-    @course = Course.find(params[:id])
+    binding.pry
+    if params[:category_id]
+      @course = Course.find(params[:id])
+    else
+      @course = Course.find(params[:id])
+    end
   end
 
   def edit
@@ -54,7 +67,7 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def course_params
-    params.require(:course).permit(:name, :description, :category_id, category_attributes: [])
+    params.require(:course).permit(:name, :description, :category_id)
   end
 
 end

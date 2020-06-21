@@ -24,8 +24,6 @@ Rails.application.routes.draw do
   post '/categories/:category_id/courses/:id', to: "userscourses#create", as: "new_usercourse"
 
 
-
-
   resources :categories do
     resources :courses  
   end

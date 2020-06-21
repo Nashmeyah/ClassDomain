@@ -6,8 +6,9 @@
     <%= link_to course.name, category_course_path(@category, course)%>
 <%end%>
 
-
-<%# <%= link_to "Add Courses", new_category_course_path %><br> %>
+<% if current_user.admin?%>
+<%= link_to "Add Courses", new_category_course_path(@category.id) %><br>
 <%= link_to "Edit Category", edit_category_path %><br>
 
 <%= link_to "Delete Category",  @category, method: :delete%>
+<%end%>
