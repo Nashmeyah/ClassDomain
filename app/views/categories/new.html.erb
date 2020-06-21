@@ -1,7 +1,7 @@
-<%= form_for(@category) do |f| %>
-----select category or create new one.
-    <%= f.label :name%>
-    <%= f.text_field :name%>
 
+<%= form_for(@category) do |f| %>   
+    Category <%= f.label :name%><br>
+    <%= f.text_field :name%>
+    <br>
     <%= f.submit%>
 <%end%>

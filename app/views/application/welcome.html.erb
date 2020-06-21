@@ -5,7 +5,7 @@
     <% if current_user.admin?%>
         <h3><%= link_to "View Categories and Courses", categories_path%></h3>
         <br>
-        <h3><%= link_to "Add Categories or Courses", new_category_course_path%></h3>
+        <h3><%= link_to "Add Categories or Courses", new_category_path%></h3>
     <%else%>
 
         <br>
