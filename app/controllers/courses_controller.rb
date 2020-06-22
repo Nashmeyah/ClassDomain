@@ -53,7 +53,6 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
           redirect_to categories_path
         else
           @course = @category.courses.find_by(id: params[:id])
-          # binding.pry
           if @course.nil?
             redirect_to category_courses_path(@category)
           end 
@@ -68,7 +67,7 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
     @course = @category.courses.find_by(id: params[:id])
     @course.update(course_params)
     if @course.save
-      redirect_to category_course_path(@course)
+      redirect_to category_course_path
     else  
       render :edit
     end

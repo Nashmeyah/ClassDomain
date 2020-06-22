@@ -9,16 +9,28 @@ class ProjectsController < ApplicationController
   def new
     if params[:userscourse_id]
       @userscourse = current_user.userscourses.find_by(id: params[:userscourse_id])
-      @project = @userscourse.projects.build
+      if @userscourse.nil?
+        redirect_to userscourses_path
+      else
+        @project = @userscourse.projects.build
+      end
     else
-      @project = current_user.projects.build
+      binding.pry
+      # render :new
     end
   end
 
   def create
+    @userscourse = current_user.userscourses.find_by(id: params[:userscourse_id])
     @project = current_user.projects.build(project_params)
-    @project.save
-    redirect_to projects_path
+    binding.pry
+    if @project.valid?
+      @project.save
+      redirect_to projects_path
+    else
+      binding.rpy
+      redirect_to new_userscourse_project_path
+    end
   end
 
   def show

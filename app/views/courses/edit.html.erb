@@ -1,6 +1,6 @@
 <%if current_user.admin?%>
 
-    <%= form_for[@category, @course] do |f| %>
+    <%= form_for [@category, @course] do |f| %>
 
     <% if @course.errors.any? %>
     <div id="error_explanation">
