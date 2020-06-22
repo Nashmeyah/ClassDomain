@@ -1,5 +1,10 @@
 <%if current_user.admin?%>
-
+     <% flash.each do |type, msg| %>
+        <div>
+            <%= msg %>
+        </div>
+    <% end %>
+    
     <%= form_for [@category, @course] do |f| %>
 
     <% if @course.errors.any? %>

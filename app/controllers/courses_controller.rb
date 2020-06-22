@@ -1,17 +1,15 @@
 class CoursesController < ApplicationController
 before_action :authenticate_user!
 before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
+before_action :set_category, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   def index
-      @category = Category.find_by(id: params[:category_id])
       @course = Course.all
-      # binding.pry
   end
 
   def new
-    # && !Category.exists?(params[:category_id])
     if params[:category_id]
-      @category = Category.find_by(id: params[:category_id])
+     set_category
       @course = @category.courses.build
     else
       redirect_to categories_path
@@ -19,9 +17,7 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def create
-      @category = Category.find_by(id: params[:category_id])
       @course = Course.new(course_params)
-      # binding.pry
       if @course.valid?
         @course.save
         redirect_to category_course_path(@category, @course)
@@ -32,7 +28,7 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
 
   def show
     if params[:category_id]
-      @category = Category.find_by(id: params[:category_id])
+      set_category
       if @category.nil?
         redirect_to categories_path
       else
@@ -42,13 +38,14 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
         end
       end 
     else
-      @course = Course.find(params[:id])
+      # @course = Course.find(params[:id])
+      # set_course
     end
   end
 
   def edit
     if params[:category_id]
-      @category = Category.find_by(id: params[:category_id])
+      set_category
         if @category.nil?
           redirect_to categories_path
         else
@@ -58,12 +55,11 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
           end 
         end
     else
-      @course = Course.find(params[:id])
+      # set_course
     end 
   end
 
   def update
-    @category = Category.find_by(id: params[:category_id])
     @course = @category.courses.find_by(id: params[:id])
     @course.update(course_params)
     if @course.save
@@ -74,16 +70,18 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def destroy
-    @category = Category.find_by(id: params[:category_id])
     Course.find(params[:id]).destroy
     redirect_to category_courses_path
   end
 
   private
 
+  def set_category
+    @category = Category.find_by(id: params[:category_id])
+  end
+
   def set_course
     @course = Course.find_by(id: params[:id])
-    
   end
 
   def course_params
