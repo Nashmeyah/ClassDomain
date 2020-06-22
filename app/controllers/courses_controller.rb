@@ -40,14 +40,16 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def edit
-    # binding.pry
     if params[:category_id]
       @category = Category.find_by(id: params[:category_id])
         if @category.nil?
           redirect_to categories_path
         else
           @course = @category.courses.find_by(id: params[:id])
-          # redirect_to category_courses_path(@category)
+          # binding.pry
+          if @course.nil?
+            redirect_to category_courses_path(@category)
+          end 
         end
     else
       @course = Course.find(params[:id])
@@ -55,6 +57,8 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def update
+    @category = Category.find_by(id: params[:category_id])
+    @course = @category.courses.find_by(id: params[:id])
     @course.update(course_params)
     if @course.save
       redirect_to category_course_path(@course)
@@ -64,7 +68,10 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
   end
 
   def destroy
+    @category = Category.find_by(id: params[:category_id])
+    @course = Course.find(params[:id])
     @course.destroy
+    category_courses_path
   end
 
   private
