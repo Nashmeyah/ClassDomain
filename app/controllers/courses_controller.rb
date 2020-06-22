@@ -40,10 +40,10 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
     if params[:category_id]
       category = Category.find_by(id: params[:category_id])
         if category.nil?
-          redirect_to categories_path, alert: "Category not found."
+          redirect_to categories_path
         else
           @course = category.courses.find_by(id: params[:id])
-          redirect_to category_courses_path(category), alert: "Course not available." if @course.nil?
+          redirect_to category_courses_path(category)
         end
     else
       @course = Course.find(params[:id])
@@ -52,7 +52,11 @@ before_action :set_course, only: [:create, :show, :edit, :update, :destroy]
 
   def update
     @course.update(course_params)
-    redirect_to category_course_path(@course)
+    if @course.save
+      redirect_to category_course_path(@course)
+    else  
+      render :edit
+    end
   end
 
   def destroy
