@@ -1,0 +1,29 @@
+<%if current_user.admin?%>
+    <% flash.each do |type, msg| %>
+        <div>
+            <%= msg %>
+        </div>
+    <% end %>
+
+    <%= form_for [@category, @course] do |f| %>
+
+    <% if @course.errors.any? %>
+        <div id="error_explanation">
+            <h2>There were some errors:</h2>
+            <ul>
+            <% @course.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
+        <%= f.label :name%>
+        <%= f.text_field :name%>
+        <%= f.hidden_field :category_id %>
+        <%= f.label :description%>
+        <%= f.text_field :description%>
+
+        <%= f.submit%>
+    <%end%>
+<%end%>
