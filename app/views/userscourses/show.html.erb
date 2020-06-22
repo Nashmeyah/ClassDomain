@@ -1,6 +1,4 @@
-<% if current_user.admin?%>
-Admin Page ----- fix this
-<%else%>
+<% if current_user%>
 <h3>Class Name:</h3>
 
     <%= @userscourses.course.name%>

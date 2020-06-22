@@ -1,7 +1,20 @@
-<%= form_for(@category) do |f| %>
+<% if current_user.admin?%>
+    <%= form_for(@category) do |f| %> 
 
-    <%= f.label :name%>
-    <%= f.text_field :name%>
+        <% if @category.errors.any? %>
+        <div id="error_explanation">
+            <h2>There were some errors:</h2>
+            <ul>
+            <% @category.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ul>
+        </div>
+        <% end %>
 
-    <%= f.submit%>
+        Category <%= f.label :name%><br>
+        <%= f.text_field :name%>
+        <br>
+        <%= f.submit%>
+    <%end%>
 <%end%>

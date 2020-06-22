@@ -1,8 +1,10 @@
-<h1>My courses:</h1>
-<% @userscourses.each do |uc|%>
-<br>
-    <%= link_to uc.course.name, userscourse_path(uc) %><br>
+<%if current_user%>
+    <h1>My courses:</h1>
+    <% @userscourses.each do |uc|%>
+    <br>
+        <%= link_to uc.course.name, userscourse_path(uc) %><br>
+    <%end%>
+    <br>
+    <br>
+    <%= link_to "Add new course",  categories_path%>
 <%end%>
-<br>
-<br>
-<%= link_to "Add new course",  categories_path%>

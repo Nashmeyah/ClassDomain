@@ -6,7 +6,7 @@
         <h1>Class description:</h1><br>
         <%= @course.description%><br>
         <%= link_to "Edit Course", edit_category_course_path%><br>
-        <%= link_to "Delete Course", action: 'destroy', method: 'delete'%><br>
+        <%= link_to "Delete Course", [@category,@course], :method => :delete%><br>
 <%else%>
 
     <h1>Class name: </h1>
