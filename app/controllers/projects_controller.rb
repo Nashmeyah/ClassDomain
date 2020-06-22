@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [ :show, :edit, :update, :destroy]
+  before_action :set_userscourse, only: [ :new, :create]
 
   def index
     @project = current_user.projects.by_date
@@ -8,7 +9,6 @@ class ProjectsController < ApplicationController
 
   def new
     if params[:userscourse_id]
-      @userscourse = current_user.userscourses.find_by(id: params[:userscourse_id])
       @project = @userscourse.projects.build
       if @userscourse.nil?
         redirect_to userscourses_path
@@ -19,7 +19,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @userscourse = current_user.userscourses.find_by(id: params[:userscourse_id])
     @project = current_user.projects.build(project_params)
     if @project.valid?
       @project.save
@@ -50,6 +49,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def set_userscourse
+    @userscourse = current_user.userscourses.find_by(id: params[:userscourse_id])
+  end
 
   def set_project
     @project = current_user.projects.find_by(id: params[:id])

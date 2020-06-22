@@ -7,8 +7,13 @@ class UserscoursesController < ApplicationController
 
   def create
     @userscourses = current_user.userscourses.build(:user_id => current_user.id, :course_id => params[:id])
-    @userscourses.save
-    redirect_to  userscourses_path 
+    if @userscourses.valid?
+      @userscourses.save
+      redirect_to  userscourses_path 
+    else 
+      flash.alert = "Failed to join course."
+      redirect_to userscourses_path 
+    end
   end
 
   def show

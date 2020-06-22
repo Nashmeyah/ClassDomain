@@ -28,7 +28,11 @@ before_action :set_category, only: [ :show, :edit, :update, :destroy]
 
     def update
         @category.update(name: params[:category][:name])
-        redirect_to category_path(@category)
+        if @category.valid?
+            redirect_to category_path(@category)
+        else
+            render :edit
+        end
     end
 
     def destroy
