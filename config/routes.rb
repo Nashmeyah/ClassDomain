@@ -14,12 +14,12 @@ Rails.application.routes.draw do
 
 
   resources :userscourses, only: [:index, :show, :destroy] do 
-    resources :projects, only: [:new, :show]
+    resources :projects, only: [:new,:create, :show]
   end
 
   resources :projects, only: [:index]
 
-  post '/userscourses/:id/projects/new', to: "projects#create", as: "new_course_project"
+  # post '/userscourses/:id/projects/new', to: "projects#create", as: "new_course_project"
 
   post '/categories/:category_id/courses/:id', to: "userscourses#create", as: "new_usercourse"
 
