@@ -1,7 +1,8 @@
-<h1>Projects: </h1>
-<% current_user.projects.each do |project| %>
-
-    <%= project.name%>
-    <br>
-    <br>
-<%end%>
+<h1>Projects and Assignments: </h1>
+<ol>
+    <% current_user.projects.each do |project| %>
+            <li><%= project.name%></li>
+            <br>
+            <br>
+    <%end%>
+</ol>

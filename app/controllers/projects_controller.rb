@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [ :show, :edit, :update, :destroy]
 
   def index
-    @project = current_user.projects
+    @project = current_user.projects.by_date
   end
 
   def new
