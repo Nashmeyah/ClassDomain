@@ -1,6 +1,6 @@
 <h1>Courses: </h1>
     <% @course.each do |course|%>
-            <li><%= link_to course.name, category_course_path(course)%></li>
+            <li><%= link_to course.name, category_course_path(@category, course)%></li>
         <%end%>
     <br>
     <br>

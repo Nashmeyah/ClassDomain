@@ -8,7 +8,6 @@ class UserscoursesController < ApplicationController
   end
 
   def create
-    binding.pry
     @userscourses = current_user.userscourses.build(:user_id => current_user.id, :course_id => params[:id])
     @userscourses.save
     redirect_to  userscourses_path 
