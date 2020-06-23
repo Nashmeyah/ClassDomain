@@ -3,7 +3,7 @@
 <h3>Courses:</h3>
 <br>
 <% @category.courses.each do |course|%>
-    <%= link_to course.name, category_course_path(@category, course)%><br><br>
+    <p><%= link_to course.name, category_course_path(@category, course)%></p><br><br>
 <%end%>
 
 <% if current_user.admin?%>

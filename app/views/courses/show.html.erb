@@ -1,11 +1,11 @@
 <% if current_user.admin?%>
     <h1>Class name: </h1>
-        <br><%= @course.name%>
+        <br><p><%= @course.name%></p>
         <br>
         <br>
         <h1>Class description:</h1><br>
         <p><%= @course.description%></p><br>
-        <%= link_to "Edit Course", edit_category_course_path%><br>
+        <%= link_to "Edit Course", edit_category_course_path%>
         <%= link_to "Delete Course", [@category,@course], :method => :delete%><br>
 <%else%>
     <% flash.each do |type, msg| %>
