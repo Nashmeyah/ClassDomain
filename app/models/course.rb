@@ -7,4 +7,12 @@ class Course < ApplicationRecord
     validates :name, :description, presence: true
 
     accepts_nested_attributes_for :category
+
+    def self.search(search)
+        if search
+            where(["name LIKE ?", "%#{search}%"])
+        else
+            Course.all
+        end
+    end
 end
