@@ -6,6 +6,13 @@
                 <%= submit_tag "Search"%>
             <%end%>
             <br>
+    <% if @course%>
+                <% @course.each do |course| %>
+                <br>
+                <li><%= link_to course.name, category_course_path(course.category_id, course.id) %></li><br>
+                <br>
+            <%end%>
+    <%end%>
 
     <h1>Categories:</h1>
 
@@ -15,9 +22,5 @@
         <br>
     <%end%>
 
-    
-
-<%else%>
-    You must sign in to access lists
 <%end%>
 

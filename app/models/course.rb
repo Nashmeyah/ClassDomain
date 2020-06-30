@@ -15,4 +15,9 @@ class Course < ApplicationRecord
             Course.all
         end
     end
+
+    # def course_cat
+    #     search
+    #     @category.id = search[:category_id]
+    # end
 end

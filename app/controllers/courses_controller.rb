@@ -5,7 +5,7 @@ before_action :set_category, only: [:index, :new, :create, :show, :edit, :update
 
   def index
       @course = Course.all
-      
+      # @search = Course.where(["name LIKE ?", "%#{params[:search]}%"])
   end
 
   def new

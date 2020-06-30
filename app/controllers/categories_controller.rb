@@ -3,8 +3,10 @@ before_action :authenticate_user!
 before_action :set_category, only: [ :show, :edit, :update, :destroy]
 
     def index
+        if params[:search]
+            @course = Course.search(params[:search])
+        end
         @category = Category.all
-        @search = Course.search(params[:search])
     end
 
     def new
