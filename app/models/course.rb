@@ -11,13 +11,6 @@ class Course < ApplicationRecord
     def self.search(search)
         if search
             where(["name LIKE ?", "%#{search}%"])
-        else
-            Course.all
         end
     end
-
-    # def course_cat
-    #     search
-    #     @category.id = search[:category_id]
-    # end
 end

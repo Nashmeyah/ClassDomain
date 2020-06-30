@@ -8,8 +8,10 @@
             <br>
     <% if @course%>
                 <% @course.each do |course| %>
-                <br>
-                <li><%= link_to course.name, category_course_path(course.category_id, course.id) %></li><br>
+                <ul>
+                    <br>
+                    <li><%= link_to course.name, category_course_path(course.category_id, course.id) %></li><br>
+                </ul>
                 <br>
             <%end%>
     <%end%>
