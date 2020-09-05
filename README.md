@@ -1,11 +1,13 @@
 # ArtClass
-# Getting Started
+###### This app was a is designed to create a domain for students to create and account and register for courses. Admins are also able to create an account and add more courses, update or delete a course of they please and will update on the students side as well. There is also an option to login using your github account.
+
+## Getting Started
 * Fork and clone this repo
 * Open Terminal
 * Navigate to the app directory
-* Type bundle install into terminal
-* Type rails s into terminal and navigate to the localhost url that it provides
-# Usage
+* Type `bundle install` into terminal
+* Type `rails s` into terminal and navigate to the localhost url that it provides
+## Usage
 You will be greeted with a welcome page, where you can choose to:
 
 * sign up / log in with username and password
